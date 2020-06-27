@@ -2,12 +2,20 @@ package com.in28minutes.microservices.currencyexchangeservice;
 
 import java.math.BigDecimal;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class ExchangeValue {
 
+    @Id
     private Long id;
 
+    @Column(name = "currency_from")
     private String from;
 
+    @Column(name = "currency_to")
     private String to;
 
     private BigDecimal conversionMultiple;
@@ -17,7 +25,8 @@ public class ExchangeValue {
      * the request. It is not a good practice, but it fits a
      * teaching purpose in the course
      */
-    private int port;
+    @Column(nullable = true)
+    private Integer port;
 
     public ExchangeValue() {
     }
