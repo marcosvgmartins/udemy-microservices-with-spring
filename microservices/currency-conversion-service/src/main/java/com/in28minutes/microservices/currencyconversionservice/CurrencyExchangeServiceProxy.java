@@ -10,7 +10,8 @@ import org.springframework.web.bind.annotation.PathVariable;
  *
  * Ribbon provides load balancing, so that one service can talk to multiple instances
  * of another service. So, when we add Ribbon, we can stop hard-coding the url of the
- * service we want to communicate with
+ * service we want to communicate with (first it comes from the properties file, then from
+ * the name server)
  */
 //@FeignClient(name = "currency-exchange-service", url = "localhost:8000")
 @FeignClient(name = "currency-exchange-service")
