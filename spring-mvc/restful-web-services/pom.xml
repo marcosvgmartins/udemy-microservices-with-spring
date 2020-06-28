@@ -64,7 +64,7 @@
 		<!-- The Swagger dependencies, along with the SwaggerConfig class, ensure
 		that Swagger generates the documentation for the application API -->
 
-		<!-- Version 3.0.0-SNAPSHOT had to be used because incompatibilities with Spring HATEOAS -->
+		<!-- Version 3.0.0-SNAPSHOT had to be used because of incompatibilities with Spring HATEOAS -->
 		<dependency>
 			<groupId>io.springfox</groupId>
 			<artifactId>springfox-swagger2</artifactId>
