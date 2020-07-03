@@ -4,6 +4,8 @@ import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.http.ResponseEntity;
@@ -21,6 +23,8 @@ public class CurrencyConversionController {
     @Autowired
     CurrencyExchangeServiceProxy proxy;
 
+    private Logger logger = LoggerFactory.getLogger(this.getClass());
+
     @GetMapping("/currency-converter/from/{from}/to/{to}/quantity/{quantity}")
     public CurrencyConversionBean convertCurrency(
         @PathVariable String from,
@@ -30,7 +34,7 @@ public class CurrencyConversionController {
         /**
          * Invoke another service and get the response
          * We'll define CurrencyConversionBean as the expected response, although it is
-         * not exactly an CurrencyConversionBean, but close enough
+         * not exactly a CurrencyConversionBean, but close enough
          *
          * The code below is cumbersome. There are a lot of things involved for just calling
          * another microservice. That's one of the problems that Feign solves
@@ -67,6 +71,7 @@ public class CurrencyConversionController {
          * With Feign, it is much simpler to make calls to another service
          */
         CurrencyConversionBean responseBean = proxy.retrieveExchangeValue(from, to);
+        logger.info("{}", responseBean);
 
         return new CurrencyConversionBean(
             responseBean.getId(),
