@@ -56,6 +56,28 @@
 			<artifactId>spring-cloud-starter-sleuth</artifactId>
 		</dependency>
 
+		<!-- Since we want to use Zipkin to capture the distributed traces, we add this dependency,
+		which will ensure that the messages and identifiers are in a format that Zipkin can
+		understand -->
+		<!--dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-sleuth-zipkin</artifactId>
+		</dependency-->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-zipkin</artifactId>
+		</dependency>
+
+		<!-- Since the communication with Zipkin happens through RabbitMQ, we need this dependency -->
+		<!--dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-bus-amqp</artifactId>
+		</dependency-->
+		<dependency>
+			<groupId>org.springframework.amqp</groupId>
+			<artifactId>spring-rabbit</artifactId>
+		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
